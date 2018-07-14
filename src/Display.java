@@ -1,7 +1,17 @@
-
+/**
+ * Class to handle the displaying, storage and management of the "board".
+ * 
+ * @author Daniel
+ *
+ */
 public class Display {
 	private String[] board;
 	
+	/**
+	 * Constructor
+	 * 
+	 * Initialises the board variable, setting each position to its number.
+	 */
 	public Display() {
 		board = new String[9];
 		for(int i = 0; i < board.length; i++ ) {
@@ -10,11 +20,21 @@ public class Display {
 		show();
 	}
 	
+	/**
+	 * updates the board with the player's command.
+	 * 
+	 * @param position the position where the player will play.
+	 * @param xo the character the player wants to store in the given position (must be 'X' or 'O')
+	 */
 	public void update(Integer position, char xo) {
 		board[position] = "" + xo;
 		show();
 	}
 	
+	/**
+	 * 
+	 * @return the winning character (if there is one). If there isn't, returns NULL.
+	 */
 	public String getWinner() {
 		//horizontal
 		if(board[0].equals(board[1]) && board[1].equals(board[2])) { //top
@@ -41,7 +61,9 @@ public class Display {
 		
 	}
 	
-	
+	/**
+	 * displays the board in the console.
+	 */
 	private void show() {
 		String str = new String();
 		
