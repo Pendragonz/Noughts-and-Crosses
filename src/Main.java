@@ -12,11 +12,17 @@ public class Main {
 	private String p2;
 	
 	private ArrayList<Integer> usedNumbers;
-	
+	/**
+	 * Main method. Starts the contructor.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Main main = new Main();
 	}	
-	
+	/**
+	 * Constructor,
+	 * Initialises the usedNumbers ArrayList, calls setup, instructions, and play.
+	 */
 	public Main() {
 		usedNumbers = new ArrayList<Integer>();
 		scanner = new Scanner(System.in);
@@ -27,6 +33,9 @@ public class Main {
 		play();
 	}
 	
+	/**
+	 * Gets the player's names and stores them. Tells the players whom is going first.
+	 */
 	private void setup() {
 		System.out.println("Enter your name, player one!");
 		p1 = scanner.next();
@@ -36,11 +45,16 @@ public class Main {
 		System.out.println("Welcome, " + p1 + " and " + p2 + "!");
 		System.out.println(p1 + " will go first and will play as 'X' ");
 	}
-	
+	/**
+	 * prints the instructions to the console.
+	 */
 	private void instructions() {
 		System.out.println("Please choose a number between 1 and 9 which corresponds to the position on the board!");
 	}
 	
+	/**
+	 * Main game loop. Prompts players for actions until there is a winner
+	 */
 	private void play() {
 		int player = 1;
 		while (noWinner() == false) {
@@ -71,6 +85,10 @@ public class Main {
 		
 	}
 	
+	/**
+	 * checks if there is a winner
+	 * @return true if there is a winner
+	 */
 	private boolean noWinner() {
 		if(display.getWinner()==null) {
 			return false;
@@ -80,6 +98,11 @@ public class Main {
 		}
 	}
 	
+	/**
+	 * alternates the player's turns
+	 * @param player
+	 * @return
+	 */
 	private int flip(int player) {
 		switch (player) {
 		case 1: player = 2;
