@@ -12,10 +12,8 @@ public class Main {
 	private String p2;
 	
 	private ArrayList<Integer> usedNumbers;
-	/**
-	 * Main method. Starts the contructor.
-	 * @param args
-	 */
+
+	
 	public static void main(String[] args) {
 		Main main = new Main();
 	}	
@@ -57,6 +55,7 @@ public class Main {
 	 */
 	private void play() {
 		int player = 1;
+		
 		while (noWinner() == false) {
 			String str = new String();
 			str += "It is your turn, ";
@@ -65,22 +64,32 @@ public class Main {
 			} else {
 				str += p2;
 			}
-			System.out.println(str += " choose where you would like to play.");
-			int pos = scanner.nextInt();
 			
-			display.update(pos, PLAYER_CHARACTERS[player-1]);
+			System.out.println(str += " choose where you would like to play.");
+			int position = scanner.nextInt();
+			
+			while(usedNumbers.contains(position)) {
+				System.out.println(str = "That position has already been taken, choose a new spot please.");
+				position = scanner.nextInt();
+			}
+			
+			usedNumbers.add(position);
+			display.update(position, PLAYER_CHARACTERS[player-1]);
 			
 			
 			player = flip(player);
 		}
+		
 		player = flip(player);
 		String winner = "" + player;
 		String winnerString ="";
+		
 		if (winner.equals("1")) {
 			winnerString = p1;
 		} else {
 			winnerString = p2;
 		}
+		
 		System.out.println("Congratulations, " + winnerString + " you have won!");
 		
 	}
@@ -93,7 +102,6 @@ public class Main {
 		if(display.getWinner()==null) {
 			return false;
 		} else {
-			
 			return true;
 		}
 	}
