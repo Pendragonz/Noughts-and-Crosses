@@ -66,9 +66,12 @@ public class Display {
 	 */
 	private void show() {
 		String str = new String();
+		String linebreak = "---+---+--- \n";
 		
 		str += " " + board[0] + " | " + board[1] + " | " + board[2] + "\n";
+		str += linebreak;
 		str += " " + board[3] + " | " + board[4] + " | " + board[5] + "\n";
+		str += linebreak;
 		str += " " + board[6] + " | " + board[7] + " | " + board[8] + "\n";
 		
 		System.out.println(str);
